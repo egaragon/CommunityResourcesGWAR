@@ -1,5 +1,10 @@
 const express = require('express');
+const path = require('path');
 const app = express();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
 
@@ -10,16 +15,19 @@ app.get('/', function (req, res) {
         user: 'earagon',
         password: 'Pass123!',
         server: 'AAD-CON-VIR',
-        database: 'Community Resource Database'
+        database: 'Community Resources Database'
     };
 
     // connect to the database
-    sql.ConnectionError(config, function(err) {
+    sql.connect(config, function(err) {
 
         if (err) console.log(err);
         
         //create Request Object
-        let request = new sql.request();
+        let request = new sql.Request();
+        
+        //insert 
+        //let sqlinsert = 'INSERT INTO '
 
         //query to the database
         request.query('SELECT * FROM ResourceCategory', function (err, recordset) {
