@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
         
 
         //query to the database
-        request.query('SELECT * FROM ResourceCategory', function (err, recordset) {
+        request.query('SELECT * FROM CommunityResource', function (err, recordset) {
 
             if (err) console.log(err)
             

@@ -1,3 +1,17 @@
+<meta>
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+<!-- CSS Reset -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+
+<!-- Milligram CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+<!-- You should properly set the path from the main file. -->
+</meta>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,8 +26,98 @@
     <h1><center>Add a new Resource</center></h1><br>
 
     <center>
-      <form action = "http://localhost:8080/api" method = "POST" enctype = "multipart/form-data">
+      <form action = "/localhost:5000" method = "POST" id="form1" enctype = "multipart/form-data">
          <input type ="text" name ="ResourceName" placeholder="ResourceName"><br>
+         <br>
+         <fieldset>
+           <legend>Select Relevant Categories</legend>
+            <div>
+              <input type="checkbox" id="Clothing" name="Clothing">
+              <label for="Clothing">Clothing</label>
+            </div>
+            <div>
+              <input type="checkbox" id="Dental" name="Dental">
+              <label for="Dental">Dental</label>
+            </div>
+            <div>
+              <input type="checkbox" id="Disabilities" name="Disabilities">
+              <label for="Disabilities">Disabilities</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Education" name="Education">
+              <label for="Education">Education</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Elderly" name="Elderly">
+              <label for="Elderly">Elderly</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Ex-Offenders" name="Ex-Offenders">
+              <label for="Ex-Offenders">Ex-Offenders</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Financial Assistance" name="Financial Assistance">
+              <label for="Financial Assistance">Financial Assistance</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Food" name="Food">
+              <label for="Food">Food</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Furniture" name="Furniture">
+              <label for="Furniture">Furniture</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Housing/Shelter" name="Housing/Shelter">
+              <label for="Housing/Shelter">Housing/Shelter</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Health Services" name="Health Services">
+              <label for="Health Services">Health Services</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Legal Services" name="Legal Services">
+              <label for="Legal Services">Legal Services</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Meals" name="Meals">
+              <label for="Meals">Meals</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Medical Clinics" name="Medical Clinics">
+              <label for="Medical Clinics">Medical Clinics</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Mental Health Services" name="Mental Health Services">
+              <label for="Mental Health Services">Mental Health Services</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Parenting" name="Parenting">
+              <label for="Parenting">Parenting</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="State" name="State">
+              <label for="State">State</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Substance Abuse" name="Substance Abuse">
+              <label for="Substance Abuse">Substance Abuse</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Transportation" name="Transportation">
+              <label for="Transportation">Transportation</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Veterans" name="Veterans">
+              <label for="Veterans">Veterans</label><br>
+            </div>
+            <div>
+              <input type="checkbox" id="Youth" name="Youth">
+              <label for="Youth">Youth</label><br>
+            </div>
+            <br>
+            
+         </fieldset>
          <br>
          <input type ="text" name = "County" placeholder="County"><br>
          <br>
@@ -27,13 +131,13 @@
          <br>
          <input type ="text" name = "Description" placeholder="Description"><br>
          <br>
-         <input type = "submit" value = "Submit"><br>
+         <button type = "submit" action = "/localhost:5000" method = "POST" form = "form1" value = "Submit" >Submit</button><br>
       </form><br>
     </center>
 
     
     <!-- Optional JavaScript -->
-      <script src="Node.js"></script>
+      <script src="index.js"></script>
    
   </body>
 </html>
