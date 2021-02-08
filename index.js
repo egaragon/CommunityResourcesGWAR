@@ -26,11 +26,10 @@ app.get('/', function (req, res) {
         //create Request Object
         let request = new sql.Request();
         
-        //insert 
-        //let sqlinsert = 'INSERT INTO '
+        
 
         //query to the database
-        request.query('SELECT * FROM ResourceCategory', function (err, recordset) {
+        request.query('SELECT * FROM CommunityResource', function (err, recordset) {
 
             if (err) console.log(err)
             
