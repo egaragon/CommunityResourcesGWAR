@@ -26,118 +26,194 @@
     <h1><center>Add a new Resource</center></h1><br>
 
     <center>
-      <form action = "/localhost:5000" method = "POST" id="form1" enctype = "multipart/form-data">
-         <input type ="text" name ="ResourceName" placeholder="ResourceName"><br>
+      <form action = "http://localhost:5000" method = "POST" id="form1">
+         <input type ="text" id= "resourceName" name ="resourceName" placeholder="Resource Name"><br>
          <br>
          <fieldset>
            <legend>Select Relevant Categories</legend>
             <div>
-              <input type="checkbox" id="Clothing" name="Clothing">
-              <label for="Clothing">Clothing</label>
+              <label for="clothing">
+              <input type="checkbox" id="clothing" name="clothing"> Clothing
+              </label>
             </div>
             <div>
-              <input type="checkbox" id="Dental" name="Dental">
-              <label for="Dental">Dental</label>
+              <label for="dental">
+              <input type="checkbox" id="dental" name="dental"> Dental
+            </label>
             </div>
             <div>
-              <input type="checkbox" id="Disabilities" name="Disabilities">
-              <label for="Disabilities">Disabilities</label><br>
+              <label for="disabilities">
+              <input type="checkbox" id="disabilities" name="disabilities"> Disabilities
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Education" name="Education">
-              <label for="Education">Education</label><br>
+              <label for="education">
+              <input type="checkbox" id="education" name="education"> Education
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Elderly" name="Elderly">
-              <label for="Elderly">Elderly</label><br>
+              <label for="elderly">
+              <input type="checkbox" id="elderly" name="elderly"> Elderly
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Ex-Offenders" name="Ex-Offenders">
-              <label for="Ex-Offenders">Ex-Offenders</label><br>
+              <label for="exOffenders">
+              <input type="checkbox" id="exOffenders" name="exOffenders"> Ex-Offenders
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Financial Assistance" name="Financial Assistance">
-              <label for="Financial Assistance">Financial Assistance</label><br>
+              <label for="financialAssistance">
+              <input type="checkbox" id="financialAssistance" name="financialAssistance"> Financial Assistance
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Food" name="Food">
-              <label for="Food">Food</label><br>
+              <label for="food">
+              <input type="checkbox" id="food" name="food"> Food
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Furniture" name="Furniture">
-              <label for="Furniture">Furniture</label><br>
+              <label for="furniture">
+              <input type="checkbox" id="furniture" name="furniture"> Furniture
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Housing/Shelter" name="Housing/Shelter">
-              <label for="Housing/Shelter">Housing/Shelter</label><br>
+              <label for="housingShelter">
+              <input type="checkbox" id="housingShelter" name="housingShelter"> Housing/Shelter
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Health Services" name="Health Services">
-              <label for="Health Services">Health Services</label><br>
+              <label for="healthServices">
+              <input type="checkbox" id="healthServices" name="healthServices"> Health Services
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Legal Services" name="Legal Services">
-              <label for="Legal Services">Legal Services</label><br>
+              <label for="legalServices">
+              <input type="checkbox" id="legalServices" name="legalServices"> Legal Services
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Meals" name="Meals">
-              <label for="Meals">Meals</label><br>
+              <label for="meals">
+              <input type="checkbox" id="meals" name="meals"> Meals
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Medical Clinics" name="Medical Clinics">
-              <label for="Medical Clinics">Medical Clinics</label><br>
+              <label for="medicalClinics">
+              <input type="checkbox" id="medicalClinics" name="medicalClinics"> Medical Clinics
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Mental Health Services" name="Mental Health Services">
-              <label for="Mental Health Services">Mental Health Services</label><br>
+              <label for="mentalHealthServices">
+              <input type="checkbox" id="mentalHealthServices" name="mentalHealthServices"> Mental Health Services
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Parenting" name="Parenting">
-              <label for="Parenting">Parenting</label><br>
+              <label for="parenting">
+              <input type="checkbox" id="parenting" name="parenting"> Parenting
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="State" name="State">
-              <label for="State">State</label><br>
+              <label for="State">
+              <input type="checkbox" id="State" name="State"> State
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Substance Abuse" name="Substance Abuse">
-              <label for="Substance Abuse">Substance Abuse</label><br>
+              <label for="substanceAbuse">
+              <input type="checkbox" id="substanceAbuse" name="substanceAbuse"> Substance Abuse
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Transportation" name="Transportation">
-              <label for="Transportation">Transportation</label><br>
+              <label for="transportation">
+              <input type="checkbox" id="transportation" name="transportation"> Transportation
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Veterans" name="Veterans">
-              <label for="Veterans">Veterans</label><br>
+              <label for="veterans">
+              <input type="checkbox" id="veterans" name="veterans"> Veterans
+              </label><br>
             </div>
             <div>
-              <input type="checkbox" id="Youth" name="Youth">
-              <label for="Youth">Youth</label><br>
+              <label for="youth">
+              <input type="checkbox" id="youth" name="youth"> Youth
+              </label><br>
             </div>
             <br>
             
          </fieldset>
          <br>
-         <input type ="text" name = "County" placeholder="County"><br>
+         <input type ="text" id= "county" name = "county" placeholder="County"><br>
          <br>
-         <input type ="text" name = "City" placeholder="City"><br>
+         <input type ="text" id= "city" name = "city" placeholder="City"><br>
          <br> 
-         <input type ="text" name = "StreetAddress" placeholder="Street Address"><br>
+         <input type ="text" id= "streetAddress" name = "streetAddress" placeholder="Street Address"><br>
          <br>
-         <input type ="text" name = "Website" placeholder="Website"><br>
+         <input type ="text" id= "website" name = "website" placeholder="Website"><br>
          <br>
-         <input type ="text" name = "PhoneNumber" placeholder="Phone Number"><br>
+         <input type ="tel" id= "phoneNumber" name = "phoneNumber" placeholder="Phone Number"><br>
          <br>
-         <input type ="text" name = "Description" placeholder="Description"><br>
+         <input type ="text" id= "information" name = "information" placeholder="Description"><br>
          <br>
-         <button type = "submit" action = "/localhost:5000" method = "POST" form = "form1" value = "Submit" >Submit</button><br>
+         <button type = "submit" form = "form1" value = "Submit" >Submit</button><br>
       </form><br>
     </center>
 
     
     <!-- Optional JavaScript -->
       <script src="index.js"></script>
-   
+      <script>
+
+      //get reference in js to form
+      const form1 = document.getElementById('form1');
+
+      //listen for form submit event
+      form1.addEventListener('submit', e => {
+        
+        //when that event happens prevent default behaviour and get Form Data from form
+        e.preventDefault();
+        const formData = new FormData(form1);
+
+        let dataToSubmit = {};
+        let checkedBoxes = [];
+
+        //iterate through each key value pair in the form data
+        formData.forEach((value, key) => {
+
+          //if the value of the input is 'on' assume it's a checkbox and add to array
+          if (value === 'on') {
+            checkedBoxes.push(key);
+          }
+          else {
+            dataToSubmit[key] = value;
+          }
+        });
+
+        //add checked boxes to submission object
+        dataToSubmit.checkedBoxes = checkedBoxes;
+
+        //submit or here we just log
+        console.log(dataToSubmit);
+
+        fetch('http://localhost:5000', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(dataToSubmit),
+        })
+        .then(res => res.json())
+        .then(dataToSubmit => {
+          console.log('Success:', dataToSubmit);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        })
+        
+      });
+
+      
+      
+      
+      </script>
+      
+
   </body>
 </html>
