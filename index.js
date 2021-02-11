@@ -27,7 +27,26 @@ const runSqlQuery = (sqlString) => {
             connection.request().query(sqlString)
             .then((results) => {
                 resolve(results);
-            });
+            }).catch(reject);
+        })
+        .catch(reject);
+    })
+}
+
+const runInsertQuery = (sqlString, input) => {
+    return new Promise((resolve, reject) => {
+        mssql.connect(config)
+        .then((connection) => {
+            const request = new mssql.Request(connection);
+            for(key in input) {
+                request.input(key, input[key])
+
+            }
+            request.query(sqlString)
+            .then((results) => {
+                resolve(results);
+            })
+            .catch(reject);
         })
         .catch(reject);
     })
@@ -53,18 +72,26 @@ app.get('/', function (req, res) {
 app.post('/', function(req,res){
     
     console.log(JSON.stringify(req.body));
-   
+    const sqlInput = req.body;
+    
+    sqlInput.resourceCategory = JSON.stringify(req.body.resourceCategory);
     
     const {resourceName, resourceCategory, county, city, streetAddress, website, phoneNumber, information} = req.body;
     
     
-    runSqlQuery(
+    runInsertQuery(
     `INSERT INTO CommunityResource (ResourceName, ResourceCategory, County, City, StreetAddress, Website, PhoneNumber, Information)
-    VALUES (${resourceName}, ${resourceCategory}, ${county}, ${city}, ${streetAddress}, ${website}, ${phoneNumber}, ${information})
-    `
-    );
-    
-    
+    VALUES (@resourceName, @resourceCategory, @county, @city, @streetAddress, @website, @phoneNumber, @information)
+    `, sqlInput
+    )
+    .then((results) => { //return the inserted record
+        res.status(201).send(JSON.stringify(results)); //tells us that insertion was successful
+    })
+    .catch((err) =>{ //in case shit's fucked up
+        console.error(err);
+        res.status(500).send();
+    })
+        
 });
 
 
