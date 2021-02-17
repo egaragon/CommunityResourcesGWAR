@@ -1,0 +1,50 @@
+//get reference in js to form
+const form1 = document.getElementById('form1');
+
+//listen for form submit event
+form1.addEventListener('submit', e => {
+  
+  //when that event happens prevent default behaviour and get Form Data from form
+  e.preventDefault();
+  const formData = new FormData(form1);
+
+  let dataToSubmit = {};
+  let checkedBoxes = [];
+
+  //iterate through each key value pair in the form data
+  formData.forEach((value, key) => {
+
+    //if the value of the input is 'on' assume it's a checkbox and add to array
+    if (value === 'on') {
+      checkedBoxes.push(key);
+    }
+    else {
+      dataToSubmit[key] = value;
+    }
+  });
+
+  //add checked boxes to submission object
+  dataToSubmit.resourceCategory = checkedBoxes;
+
+  //submit or here we just log
+  console.log(dataToSubmit);
+
+  fetch('http://localhost:5000', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(dataToSubmit),
+  })
+  .then(res => res.json())
+  .then(dataToSubmit => {
+    console.log('Success:', dataToSubmit);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  })
+  
+});
+
+
+

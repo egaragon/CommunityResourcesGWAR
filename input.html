@@ -140,11 +140,7 @@
             
          </fieldset>
          <br>
-         <input type ="text" id= "county" name = "county" placeholder="County"><br>
-         <br>
-         <input type ="text" id= "city" name = "city" placeholder="City"><br>
-         <br> 
-         <input type ="text" id= "streetAddress" name = "streetAddress" placeholder="Street Address"><br>
+         <input type ="text" id= "autocomplete" name = "address" placeholder="Full Address"><br>
          <br>
          <input type ="text" id= "website" name = "website" placeholder="Website"><br>
          <br>
@@ -158,61 +154,37 @@
 
     
     <!-- Optional JavaScript -->
-      <script src="index.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places&callback=initAutocomplete" async defer></script>
       <script>
+        let autocomplete;
+        function initAutocomplete() {
+          autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('autocomplete'),
+              {
+                types: ['address'],
+                componentRestrictions: {'country' : ['US']},
+                fields: ['address_component']
+              });
+          autocomplete.addListener('place_changed', onPlaceChanged);
+        }
 
-      //get reference in js to form
-      const form1 = document.getElementById('form1');
-
-      //listen for form submit event
-      form1.addEventListener('submit', e => {
         
-        //when that event happens prevent default behaviour and get Form Data from form
-        e.preventDefault();
-        const formData = new FormData(form1);
 
-        let dataToSubmit = {};
-        let checkedBoxes = [];
+        function onPlaceChanged() {
+          let place = autocomplete.getPlace();
 
-        //iterate through each key value pair in the form data
-        formData.forEach((value, key) => {
-
-          //if the value of the input is 'on' assume it's a checkbox and add to array
-          if (value === 'on') {
-            checkedBoxes.push(key);
+          if(!place.address_component) {
+            //user did not select a prediction; reset the input field
+            document.getElementById('autocomplete').placeholder = 
+            'Full Address';
+          } else {
+            //display details about the valid place
+            document.getElementById('details').innerHTML = place.name;
           }
-          else {
-            dataToSubmit[key] = value;
-          }
-        });
-
-        //add checked boxes to submission object
-        dataToSubmit.resourceCategory = checkedBoxes;
-
-        //submit or here we just log
-        console.log(dataToSubmit);
-
-        fetch('http://localhost:5000', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(dataToSubmit),
-        })
-        .then(res => res.json())
-        .then(dataToSubmit => {
-          console.log('Success:', dataToSubmit);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        })
-        
-      });
-
-      
-      
-      
+        }
       </script>
+      <script src="index.js"></script>
+      <script src="post.js"></script>
       
 
   </body>
