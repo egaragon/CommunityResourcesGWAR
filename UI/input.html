@@ -1,0 +1,170 @@
+<meta>
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+<!-- CSS Reset -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+
+<!-- Milligram CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+<!-- You should properly set the path from the main file. -->
+</meta>
+<style>
+  form {
+    margin: 1rem;
+  }
+  input {
+    max-width: 30rem;
+    display: block;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 5rem 1fr;
+  }
+
+  .checkboxes > fieldset > label {
+    font-weight: 200;
+    font-size: .8rem;
+  }
+
+  .textboxes {
+    grid-row: 1 / span 1;
+    grid-column: 1;
+  }
+
+  .categories {
+    grid-row: 1;
+    grid-column: 2 / span 2;
+    border-bottom: 1px solid black;
+  }
+
+  .checkboxes1 {
+    grid-row: 2;
+    grid-column: 2;
+  }
+
+  .checkboxes2 {
+    grid-row: 2;
+    grid-column: 3;
+  }
+</style>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Community Resources</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   
+  </head>
+  <body>
+    <h1><center>Add a new Resource</center></h1>
+    <form action = "http://localhost:5000" method = "POST" id="form1">
+      <div class=container>
+        <div class="textboxes">
+        <label>
+          Resource Name
+         <input type ="text" id= "resourceName" name ="resourceName" >
+        </label>
+        <label>
+          Full Address
+          <input type ="text" id= "autocomplete" name = "address" >
+        </label>
+        <label>
+          Website
+          <input type ="text" id= "website" name = "website" >
+        </label>
+        <label>
+          Phone
+          <input type ="tel" id= "phoneNumber" name = "phoneNumber" >
+        </label>
+         <label>
+           Description
+          <input type ="text" id= "information" name = "information" >
+         </label>
+        </div>
+        <h3 class='categories'>Relevant Categories</h3>
+        <div class="checkboxes1">
+          <label for="clothing">
+          <input type="checkbox" id="clothing" name="clothing"> Clothing
+          </label>
+          <label for="dental">
+          <input type="checkbox" id="dental" name="dental"> Dental
+          </label>
+          <label for="disabilities">
+          <input type="checkbox" id="disabilities" name="disabilities"> Disabilities
+          </label>
+          <label for="education">
+          <input type="checkbox" id="education" name="education"> Education
+          </label>
+          <label for="elderly">
+          <input type="checkbox" id="elderly" name="elderly"> Elderly
+          </label>
+          <label for="exOffenders">
+          <input type="checkbox" id="exOffenders" name="exOffenders"> Ex-Offenders
+          </label>
+          <label for="financialAssistance">
+          <input type="checkbox" id="financialAssistance" name="financialAssistance"> Financial Assistance
+          </label>
+          <label for="food">
+          <input type="checkbox" id="food" name="food"> Food
+          </label>
+          <label for="furniture">
+          <input type="checkbox" id="furniture" name="furniture"> Furniture
+          </label>
+          <label for="housingShelter">
+          <input type="checkbox" id="housingShelter" name="housingShelter"> Housing/Shelter
+          </label>
+          <label for="healthServices">
+            <input type="checkbox" id="healthServices" name="healthServices"> Health Services
+            </label>
+        </div>
+        <div class="checkboxes2">
+          <label for="legalServices">
+          <input type="checkbox" id="legalServices" name="legalServices"> Legal Services
+          </label>
+          <label for="meals">
+          <input type="checkbox" id="meals" name="meals"> Meals
+          </label>
+          <label for="medicalClinics">
+          <input type="checkbox" id="medicalClinics" name="medicalClinics"> Medical Clinics
+          </label>
+          <label for="mentalHealthServices">
+          <input type="checkbox" id="mentalHealthServices" name="mentalHealthServices"> Mental Health Services
+          </label>
+          <label for="parenting">
+          <input type="checkbox" id="parenting" name="parenting"> Parenting
+          </label>
+          <label for="State">
+          <input type="checkbox" id="State" name="State"> State
+          </label>
+          <label for="substanceAbuse">
+          <input type="checkbox" id="substanceAbuse" name="substanceAbuse"> Substance Abuse
+          </label>
+          <label for="transportation">
+          <input type="checkbox" id="transportation" name="transportation"> Transportation
+          </label>
+          <label for="veterans">
+          <input type="checkbox" id="veterans" name="veterans"> Veterans
+          </label>
+          <label for="youth">
+          <input type="checkbox" id="youth" name="youth"> Youth
+          </label>
+          <button type = "submit" form = "form1" value = "Submit" >Submit</button>
+        </div>
+      </div>
+        
+      </form>
+
+    
+    <!-- Optional JavaScript -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMxiVZCqexGUqmXGHPrUEqGszYACjOHo&libraries=places&callback=initAutocomplete" async defer></script>
+      <script src="post.js"></script>
+      
+
+  </body>
+</html>
