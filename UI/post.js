@@ -1,3 +1,5 @@
+const e = require("express");
+
 //get reference in js to form
 const form1 = document.getElementById('form1');
 
@@ -10,6 +12,14 @@ form1.addEventListener('submit', e => {
 
   let dataToSubmit = {};
   let checkedBoxes = [];
+  
+
+  if(placeSelected){
+    console.log(placeSelected);
+    console.log('alert should fire');
+    alert('Please Select an Autocomplete Option');
+    return;
+  }
 
   //iterate through each key value pair in the form data
   formData.forEach((value, key) => {
@@ -25,7 +35,7 @@ form1.addEventListener('submit', e => {
 
   //add checked boxes to submission object
   dataToSubmit.resourceCategory = checkedBoxes;
-
+  
   //submit or here we just log
   console.log(dataToSubmit);
   if(placeSelected) {
@@ -48,9 +58,16 @@ form1.addEventListener('submit', e => {
 });
 
 let autocomplete;
-let placeSelected = false;
+let placeSelected = false;//check if an autocomplete selection was made
+ 
+
+function newFunction() {
+  let autocomplete;
+  return autocomplete;
+}
 
 function initAutocomplete() {
+  
   console.log('initAutocomplete Called')
   autocomplete = new google.maps.places.Autocomplete(
     document.getElementById('autocomplete'),
@@ -62,17 +79,21 @@ function initAutocomplete() {
   autocomplete.addListener('place_changed', onPlaceChanged);
 }
 
-function onPlaceChanged() {
+//this function means a place was selected
+function onPlaceChanged() { 
   let place = autocomplete.getPlace();
 
   placeSelected = true;
-
+  console.log(placeSelected);
+  
   console.log('PLACE:', place);
 
   if(place.address_component) {
     console.log(place);
   }
-}
+} 
+
+
 
 
 
