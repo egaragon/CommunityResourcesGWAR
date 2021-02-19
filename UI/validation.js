@@ -1,5 +1,3 @@
-const e = require("express");
-
 //get reference in js to form
 const form1 = document.getElementById('form1');
 
@@ -12,11 +10,9 @@ form1.addEventListener('submit', e => {
 
   let dataToSubmit = {};
   let checkedBoxes = [];
-  
+  console.log(placeSelected);
 
-  if(placeSelected){
-    console.log(placeSelected);
-    console.log('alert should fire');
+  if(!placeSelected){
     alert('Please Select an Autocomplete Option');
     return;
   }
@@ -61,16 +57,11 @@ let autocomplete;
 let placeSelected = false;//check if an autocomplete selection was made
  
 
-function newFunction() {
-  let autocomplete;
-  return autocomplete;
-}
-
 function initAutocomplete() {
   
   console.log('initAutocomplete Called')
   autocomplete = new google.maps.places.Autocomplete(
-    document.getElementById('autocomplete'),
+    document.getElementById('fullAddress'),
       {
         types: ['address'],
         componentRestrictions: {'country' : ['US']},
@@ -84,8 +75,7 @@ function onPlaceChanged() {
   let place = autocomplete.getPlace();
 
   placeSelected = true;
-  console.log(placeSelected);
-  
+    
   console.log('PLACE:', place);
 
   if(place.address_component) {

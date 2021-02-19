@@ -49,6 +49,11 @@
     grid-row: 2;
     grid-column: 3;
   }
+
+  .template {
+    font-weight: normal;
+    
+  }
 </style>
 
 <!doctype html>
@@ -72,15 +77,16 @@
         </label>
         <label>
           Full Address
-          <input type ="text" id= "autocomplete" name = "address" >
+          <input type ="text" id="fullAddress" name = "fullAddress" >
         </label>
         <label>
           Website
           <input type ="text" id= "website" required="required" name = "website" >
         </label>
         <label>
-          Phone
-          <input type ="tel" id= "phoneNumber" required="required" name = "phoneNumber" >
+          Phone: <span class="template">000-000-0000</span>
+          <input type ="tel" id= "phoneNumber" required="required" name = "phoneNumber"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
         </label>
          <label>
            Description
@@ -163,7 +169,7 @@
     
     <!-- Optional JavaScript -->
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMxiVZCqexGUqmXGHPrUEqGszYACjOHo&libraries=places&callback=initAutocomplete" async defer></script>
-      <script src="post.js"></script>
+      <script src="validation.js"></script>
       
 
   </body>
