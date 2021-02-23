@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mssql = require('mssql')
+const mssql = require('mssql');
+const { type } = require('os');
 
 const app = express();
 app.use(cors());
@@ -80,8 +81,8 @@ app.post('/', function(req,res){
     
     
     runInsertQuery(
-    `INSERT INTO CommunityResource (ResourceName, ResourceCategory, FullAddress, Website, PhoneNumber, Information)
-    VALUES (@resourceName, @resourceCategory, @fullAddress, @website, @phoneNumber, @information)
+    `INSERT INTO CommunityResource (resourceName, resourceCategory, resourceAddress, county, website, phoneNumber, information)
+    VALUES (@resourceName, @resourceCategory, @fullAddress, @county, @website, @phoneNumber, @information)
     `, sqlInput
     )
     .then((results) => { //return the inserted record

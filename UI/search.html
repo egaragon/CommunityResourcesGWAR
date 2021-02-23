@@ -19,9 +19,15 @@
         text-align: center;
     }
 
-    .hidden{
-        visibility: hidden;
+    .hidden {
+        display: none;
     }
+
+    input {
+    max-width: 30rem;
+    display: block;
+  }
+
 
 </style>
 
@@ -35,15 +41,17 @@
     </head>
 
     <body>
-
-        <input type="text" id="nameSearch">
-
         <center>
+            <h1>Community Resources</h1>
+            <input type="text" id="nameSearch" class="searchBox" placeholder="What are you looking for?">
+
+        
             <table style="width:75%" id="searchTable">
                 <tr>
                     <th>Resource</th>
                     <th>Categories</th>
                     <th>Address</th>
+                    <th>County</th>
                     <th>Website</th>
                     <th>Phone Number</th>
                     <th>Description</th>

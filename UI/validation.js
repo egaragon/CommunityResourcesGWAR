@@ -1,6 +1,8 @@
 //get reference in js to form
 const form1 = document.getElementById('form1');
 
+let county;
+
 //listen for form submit event
 form1.addEventListener('submit', e => {
   
@@ -23,6 +25,7 @@ form1.addEventListener('submit', e => {
     //if the value of the input is 'on' assume it's a checkbox and add to array
     if (value === 'on') {
       checkedBoxes.push(key);
+      console.log(key);
     }
     else {
       dataToSubmit[key] = value;
@@ -31,6 +34,7 @@ form1.addEventListener('submit', e => {
 
   //add checked boxes to submission object
   dataToSubmit.resourceCategory = checkedBoxes;
+  dataToSubmit.county = county;
   
   //submit or here we just log
   console.log(dataToSubmit);
@@ -45,12 +49,13 @@ form1.addEventListener('submit', e => {
     .then(res => res.json())
     .then(dataToSubmit => {
       console.log('Success:', dataToSubmit);
+      
     })
     .catch((error) => {
       console.error('Error:', error);
     })
   }
-
+  
 });
 
 let autocomplete;
@@ -73,7 +78,10 @@ function initAutocomplete() {
 //this function means a place was selected
 function onPlaceChanged() { 
   let place = autocomplete.getPlace();
-
+  county = place.address_components.find(element => element?.long_name?.includes('County'));
+  console.log(county);
+  county = county?.long_name;
+  
   placeSelected = true;
     
   console.log('PLACE:', place);
@@ -81,9 +89,6 @@ function onPlaceChanged() {
   if(place.address_component) {
     console.log(place);
   }
+  
 } 
-
-
-
-
 

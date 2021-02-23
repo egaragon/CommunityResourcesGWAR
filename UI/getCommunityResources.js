@@ -6,9 +6,11 @@ fetch('http:localhost:5000', {
 .then(res => res.json())
 .then(data => {
     searchObject = data.recordset.map(element => {
+        let fieldValues = `${element.resourceName} ${JSON.parse(element.resourceCategory).join(', ')} 
+            ${element.resourceAddress} ${element.county} ${element.Website} ${element.phoneNumber} ${element.information}`;
         return {
             id: element.ResourceID, 
-            string: JSON.stringify(element)
+            string: fieldValues.toLowerCase()
         }
     });
     data.recordset.forEach(resource => {
@@ -47,9 +49,19 @@ function createRow(resource) {
 
 const nameSearch = document.getElementById('nameSearch');
 
-nameSearch.addEventListener('change', e => {
-    let filteredList = searchObject.filter(element => !element.string.includes(e.target.value));
+
+
+nameSearch.addEventListener('input', e => {
+    const searchString = e.target.value.toLowerCase();
+
+    let filteredList = searchObject.filter(element => !element.string.includes(searchString));
     filteredList.forEach(idToHide => {
         document.getElementById('row' + idToHide.id).setAttribute('class', 'hidden');
     })
+    
+    let defilteredList = searchObject.filter(element => element.string.includes(searchString));
+    defilteredList.forEach(idToHide => {
+        document.getElementById('row' + idToHide.id).classList.remove('hidden');
+    })
+    
 });
