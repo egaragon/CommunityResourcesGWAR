@@ -32,7 +32,7 @@ function createRow(resource) {
 
     //insert cell information
     for(const [key, value] of Object.entries(resource)) {
-        if(key !== 'ResourceID') {
+        if(key !== 'resourceID') {
             const cell = document.createElement('td');
             
             if(key === 'ResourceCategory') {

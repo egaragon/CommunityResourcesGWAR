@@ -66,7 +66,7 @@ function initAutocomplete() {
   
   console.log('initAutocomplete Called')
   autocomplete = new google.maps.places.Autocomplete(
-    document.getElementById('fullAddress'),
+    document.getElementById('resourceAddress'),
       {
         types: ['address'],
         componentRestrictions: {'country' : ['US']},

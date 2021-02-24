@@ -77,12 +77,12 @@ app.post('/', function(req,res){
     
     sqlInput.resourceCategory = JSON.stringify(req.body.resourceCategory);
     
-    const {resourceName, resourceCategory, county, city, fullAddress, website, phoneNumber, information} = req.body;
+    const {resourceName, resourceCategory, county, city, resourceAddress, website, phoneNumber, information} = req.body;
     
     
     runInsertQuery(
     `INSERT INTO CommunityResource (resourceName, resourceCategory, resourceAddress, county, website, phoneNumber, information)
-    VALUES (@resourceName, @resourceCategory, @fullAddress, @county, @website, @phoneNumber, @information)
+    VALUES (@resourceName, @resourceCategory, @resourceAddress, @county, @website, @phoneNumber, @information)
     `, sqlInput
     )
     .then((results) => { //return the inserted record
