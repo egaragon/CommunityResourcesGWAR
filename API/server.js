@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 let config = {
     user: 'earagon',
     password: 'Pass123!',
-    server: 'ARAGON\\SQLEXPRESS',
-    database: 'Community Resources'
+    server: 'AAD-CON-VIR',
+    database: 'Community Resources Database'
 };
 
 //magic that connects to the sql database or something idk

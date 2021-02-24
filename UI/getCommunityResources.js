@@ -6,11 +6,13 @@ fetch('http:localhost:5000', {
 .then(res => res.json())
 .then(data => {
     searchObject = data.recordset.map(element => {
-        let fieldValues = `${element.resourceName} ${JSON.parse(element.resourceCategory).join(', ')} 
-            ${element.resourceAddress} ${element.county} ${element.Website} ${element.phoneNumber} ${element.information}`;
+        let fieldValues = `${element.resourceName} ${element.resourceAddress} ${element.county} 
+            ${element.website} ${element.phoneNumber} ${element.information}`;
+        
         return {
-            id: element.ResourceID, 
+            id: element.resourceID, 
             string: fieldValues.toLowerCase()
+            
         }
     });
     data.recordset.forEach(resource => {
@@ -27,7 +29,7 @@ function createRow(resource) {
     
     //create a table row
     const row = document.createElement('tr');
-    row.setAttribute('id','row' + resource.ResourceID);
+    row.setAttribute('id','row' + resource.resourceID);
     searchTable.appendChild(row);
 
     //insert cell information
@@ -35,7 +37,7 @@ function createRow(resource) {
         if(key !== 'resourceID') {
             const cell = document.createElement('td');
             
-            if(key === 'ResourceCategory') {
+            if(key === 'resourceCategory') {
                 const parsed = JSON.parse(value);
                 cell.innerHTML = parsed.join(', ');
             }
@@ -54,14 +56,17 @@ const nameSearch = document.getElementById('nameSearch');
 nameSearch.addEventListener('input', e => {
     const searchString = e.target.value.toLowerCase();
 
-    let filteredList = searchObject.filter(element => !element.string.includes(searchString));
-    filteredList.forEach(idToHide => {
-        document.getElementById('row' + idToHide.id).setAttribute('class', 'hidden');
+    
+   
+    let thingsToUnhide = searchObject.filter(element => element.string.includes(searchString));
+    thingsToUnhide.forEach(idToHide => {
+        document.getElementById('row' + idToHide.id).classList.remove('hidden');
     })
     
-    let defilteredList = searchObject.filter(element => element.string.includes(searchString));
-    defilteredList.forEach(idToHide => {
-        document.getElementById('row' + idToHide.id).classList.remove('hidden');
+    let thingsToHide = searchObject.filter(element => !element.string.includes(searchString))
+    
+    thingsToHide.forEach(idToHide => {
+        document.getElementById('row' + idToHide.id).setAttribute('class', 'hidden');
     })
     
 });
