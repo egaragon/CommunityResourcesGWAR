@@ -11,7 +11,8 @@ fetch('http:localhost:5000', {
         
         return {
             id: element.resourceID, 
-            string: fieldValues.toLowerCase()
+            string: fieldValues.toLowerCase(),
+            categories: JSON.parse(element.resourceCategory.toLowerCase())
             
         }
     });
@@ -30,7 +31,10 @@ function createRow(resource) {
     //create a table row
     const row = document.createElement('tr');
     row.setAttribute('id','row' + resource.resourceID);
+    row.setAttribute('class', 'record');
     searchTable.appendChild(row);
+
+
 
     //insert cell information
     for(const [key, value] of Object.entries(resource)) {
@@ -41,6 +45,9 @@ function createRow(resource) {
                 const parsed = JSON.parse(value);
                 cell.innerHTML = parsed.join(', ');
             }
+            else if(key === 'website') {
+                cell.innerHTML = `<a href="http://${value}" target="_blank"> ${value} </a>`;
+            }
             else {
                 cell.innerHTML = value;
             }
@@ -50,23 +57,51 @@ function createRow(resource) {
 }
 
 const nameSearch = document.getElementById('nameSearch');
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+let categoryToSearchFor = [];
+let searchString = '';
 
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', e => {
+        
+        if(e.target.checked) {
+            categoryToSearchFor.push(e.target.id);
+        }
+        else {
+            let index = categoryToSearchFor.indexOf(e.target.id);
+            categoryToSearchFor.splice(index, 1);
+        }
+
+        applyFilter(searchString, categoryToSearchFor);
+    })
+})
+
+function applyFilter(searchString, searchCategories) {
+    const records = Array.from(document.getElementsByClassName('record'));
+    
+    records?.forEach(record => {
+        record.classList.remove('hidden');
+    })
+
+    let thingsToHide = searchObject.filter(element => {
+        
+        let matchesCategory = searchCategories.every(category => {
+            return element.categories.includes(category);
+        })
+        let matchesString = element.string.includes(searchString);
+
+        return !matchesCategory || !matchesString;
+    })
+
+    thingsToHide.forEach(thingToHide =>{
+        document.getElementById('row' + thingToHide.id).setAttribute('class', 'hidden');
+    })
+
+}
 
 
 nameSearch.addEventListener('input', e => {
-    const searchString = e.target.value.toLowerCase();
-
-    
+    searchString = e.target.value.toLowerCase();
+    applyFilter(searchString, categoryToSearchFor);
    
-    let thingsToUnhide = searchObject.filter(element => element.string.includes(searchString));
-    thingsToUnhide.forEach(idToHide => {
-        document.getElementById('row' + idToHide.id).classList.remove('hidden');
-    })
-    
-    let thingsToHide = searchObject.filter(element => !element.string.includes(searchString))
-    
-    thingsToHide.forEach(idToHide => {
-        document.getElementById('row' + idToHide.id).setAttribute('class', 'hidden');
-    })
-    
 });
