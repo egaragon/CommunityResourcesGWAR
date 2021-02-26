@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 let config = {
     user: 'earagon',
     password: 'Pass123!',
-    server: 'AAD-CON-VIR',
-    database: 'Community Resources Database'
+    server: 'ARAGON\\SQLEXPRESS',
+    database: 'Community Resources'
 };
 
 //magic that connects to the sql database or something idk
@@ -77,22 +77,30 @@ app.post('/', function(req,res){
     
     sqlInput.resourceCategory = JSON.stringify(req.body.resourceCategory);
     
-    const {resourceName, resourceCategory, county, city, resourceAddress, website, phoneNumber, information} = req.body;
-    
-    
-    runInsertQuery(
-    `INSERT INTO CommunityResource (resourceName, resourceCategory, resourceAddress, county, website, phoneNumber, information)
-    VALUES (@resourceName, @resourceCategory, @resourceAddress, @county, @website, @phoneNumber, @information)
-    `, sqlInput
-    )
-    .then((results) => { //return the inserted record
-        res.status(201).send(JSON.stringify(results)); //tells us that insertion was successful
-    })
-    .catch((err) =>{ //in case shit's fucked up
-        console.error(err);
-        res.status(500).send();
-    })
-        
+    runSqlQuery('SELECT resourceAddress FROM CommunityResource;')
+    .then(dbReturn => {
+
+        if(dbReturn.recordset.some((addressObj) => {
+            return addressObj.resourceAddress === req.body.resourceAddress;
+        })) {
+            res.status(418).send('Address is already used');
+            
+        }
+        else {
+            runInsertQuery(
+            `INSERT INTO CommunityResource (resourceName, resourceCategory, resourceAddress, county, website, phoneNumber, information)
+            VALUES (@resourceName, @resourceCategory, @resourceAddress, @county, @website, @phoneNumber, @information)
+            `, sqlInput
+            )
+            .then((results) => { //return the inserted record
+                res.status(201).send(JSON.stringify(results)); //tells us that insertion was successful
+            })
+            .catch((err) =>{ //in case shit's fucked up
+                console.error(err);
+                res.status(500).send();
+            })
+        } 
+    })  
 });
 
 

@@ -46,13 +46,22 @@ form1.addEventListener('submit', e => {
       },
       body: JSON.stringify(dataToSubmit),
     })
+    .then(res => {
+      if (res.status == 418) {
+        alert('Duplicate Address');
+        throw Error(res.body);
+      }
+    
+    })
     .then(res => res.json())
     .then(dataToSubmit => {
       console.log('Success:', dataToSubmit);
+      form1.reset();
       
     })
     .catch((error) => {
       console.error('Error:', error);
+      
     })
   }
   

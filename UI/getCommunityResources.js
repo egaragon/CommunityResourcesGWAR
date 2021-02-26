@@ -39,7 +39,7 @@ function createRow(resource) {
     //insert cell information
     for(const [key, value] of Object.entries(resource)) {
         if(key !== 'resourceID') {
-            const cell = document.createElement('td');
+            const cell = document.createElement('td'); 
             
             if(key === 'resourceCategory') {
                 const parsed = JSON.parse(value);
@@ -56,20 +56,21 @@ function createRow(resource) {
     }
 }
 
-const nameSearch = document.getElementById('nameSearch');
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-let categoryToSearchFor = [];
-let searchString = '';
+const nameSearch = document.getElementById('nameSearch'); 
+const checkboxes = document.querySelectorAll('input[type="checkbox"]'); 
+let categoryToSearchFor = []; //empty array to put checkbox values in
+let searchString = ''; //initialize the variable that holds the string in the searchbox
 
+//listening for any time a checkbox is checked/unchecked
 checkboxes.forEach(checkbox => {
     checkbox.addEventListener('change', e => {
         
         if(e.target.checked) {
-            categoryToSearchFor.push(e.target.id);
+            categoryToSearchFor.push(e.target.id); //push checkbox checked values into array
         }
         else {
             let index = categoryToSearchFor.indexOf(e.target.id);
-            categoryToSearchFor.splice(index, 1);
+            categoryToSearchFor.splice(index, 1); //remove unchecked values from array
         }
 
         applyFilter(searchString, categoryToSearchFor);
@@ -79,8 +80,19 @@ checkboxes.forEach(checkbox => {
 function applyFilter(searchString, searchCategories) {
     const records = Array.from(document.getElementsByClassName('record'));
     
-    records?.forEach(record => {
-        record.classList.remove('hidden');
+    console.log(records);
+
+    let thingstoUnhide = searchObject.filter(element => {
+        let matchesCategory = searchCategories.every(category => {
+            return element.categories.includes(category);
+        })
+        let matchesString = element.string.includes(searchString);
+
+        return matchesCategory && matchesString;
+    })
+
+    thingstoUnhide.forEach(thingToUnhide => {
+        document.getElementById('row' + thingToUnhide.id).classList.remove('hidden');
     })
 
     let thingsToHide = searchObject.filter(element => {
@@ -95,6 +107,7 @@ function applyFilter(searchString, searchCategories) {
 
     thingsToHide.forEach(thingToHide =>{
         document.getElementById('row' + thingToHide.id).setAttribute('class', 'hidden');
+        console.log(`Thing to Hide: ${thingsToHide}`);
     })
 
 }
