@@ -47,11 +47,11 @@ form1.addEventListener('submit', e => {
       body: JSON.stringify(dataToSubmit),
     })
     .then(res => {
-      if (res.status == 418) {
+      if (!res.ok) {
         alert('Duplicate Address');
-        throw Error(res.body);
+        throw Error(res.statusText);
       }
-    
+      return res;
     })
     .then(res => res.json())
     .then(dataToSubmit => {
