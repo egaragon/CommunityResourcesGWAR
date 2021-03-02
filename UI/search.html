@@ -16,43 +16,64 @@
     }
     th {
         text-align: center;
+        
     }
 
-    .table {
-        margin: 3rem;
+    td {
+        padding: 1rem;
+        text-align: center;
+        margin: 1rem;
+
     }
 
-    
+    table {
+        flex-grow: 5;
+        grid-column: 2fr;
+        min-height: 100%;
+        overflow: auto;
+    }
+
+    tr:nth-child(even) {
+        background-color: lightskyblue;
+        color: black;
+    }
+
+        
     .hidden {
         display: none;
     }
 
     input {
-    max-width: 30rem;
-    display: block;
-  }
+        max-width: 30rem;
+        display: block;
+    }
 
-  .checkboxes1 {
-    grid-row: 2;
-    grid-column: 2;
-    margin-left: 2rem;
-    
-  }
 
-  .checkboxes2 {
-    grid-row: 2;
-    grid-column: 3;
-    margin-left: 2rem;
-    
-  }
+    #categoryCheckboxes {
+        padding: 1rem;
+        border: 1px solid black;
+        border-right: none;
+        flex-shrink: 1;
+        max-height: 100%;
+    }
 
-  .grid {
-      display: grid;
-      grid-template-columns: 1fr 3fr;
-
-  }
-
+    .bodyBox {
+        display: flex;
+        flex-direction: row;  
+        flex: 5;   
+        align-items: stretch; 
+        margin: 3rem;   
+        max-height: 100%;  
+    }
   
+    .searchBox {
+        display: inline;
+    }
+
+    .emoji {
+        margin-right: 1rem;
+        display: inline;
+    }
   
 </style>
 
@@ -68,95 +89,80 @@
     <body>
         <center>
             <h1>Community Resources</h1>
-        
-            <input type="text" id="nameSearch" class="searchBox" placeholder="What are you looking for?">
-        </center>  
-      <div class="grid">
-      <div id="categoryCheckboxes">
-        <div class="checkboxes1">
-          <label for="clothing">
-            <input type="checkbox" id="clothing" name="Clothing"> Clothing
-          </label>
-          <label for="dental">
-            <input type="checkbox" id="dental" name="Dental"> Dental
-          </label>
-          <label for="disabilities">
-            <input type="checkbox" id="disabilities" name="Disabilities"> Disabilities
-          </label>
-          <label for="education">
-            <input type="checkbox" id="education" name="education"> Education
-          </label>
-          <label for="elderly">
-            <input type="checkbox" id="elderly" name="Elderly"> Elderly
-          </label>
-          <label for="exOffenders">
-            <input type="checkbox" id="exOffenders" name="Ex-Offenders"> Ex-Offenders
-          </label>
-          <label for="financialAssistance">
-            <input type="checkbox" id="financialAssistance" name="Financial Assistance"> Financial Assistance
-          </label>
-          <label for="food">
-            <input type="checkbox" id="food" name="Food"> Food
-          </label>
-          <label for="furniture">
-            <input type="checkbox" id="furniture" name="Furniture"> Furniture
-          </label>
-          <label for="housingShelter">
-            <input type="checkbox" id="housingShelter" name="Housing/Shelter"> Housing/Shelter
-          </label>
-          <label for="healthServices">
-            <input type="checkbox" id="healthServices" name="Health Services"> Health Services
-          </label>
-        </div>
-        <div class="checkboxes2">
-          <label for="legalServices">
-            <input type="checkbox" id="legalServices" name="Legal Services"> Legal Services
-          </label>
-          <label for="meals">
-            <input type="checkbox" id="meals" name="Meals"> Meals
-          </label>
-          <label for="medicalClinics">
-            <input type="checkbox" id="medicalClinics" name="Medical Clinics"> Medical Clinics
-          </label>
-          <label for="mentalHealthServices">
-            <input type="checkbox" id="mentalHealthServices" name="Mental Health Services"> Mental Health Services
-          </label>
-          <label for="parenting">
-            <input type="checkbox" id="parenting" name="Parenting"> Parenting
-          </label>
-          <label for="State">
-            <input type="checkbox" id="State" name="State"> State
-          </label>
-          <label for="substanceAbuse">
-            <input type="checkbox" id="substanceAbuse" name="Substance Abuse"> Substance Abuse
-          </label>
-          <label for="transportation">
-            <input type="checkbox" id="transportation" name="Transportation"> Transportation
-          </label>
-          <label for="veterans">
-            <input type="checkbox" id="veterans" name="Veterans"> Veterans
-          </label>
-          <label for="youth">
-            <input type="checkbox" id="youth" name="Youth"> Youth
-          </label>
-          
-        </div>
-      </div>
-
-        
-            <table id="searchTable" class="table">
-                <tr>
-                    <th>Resource</th>
-                    <th>Categories</th>
-                    <th>Address</th>
-                    <th>County</th>
-                    <th>Website</th>
-                    <th>Phone Number</th>
-                    <th>Description</th>
-                </tr>
             
+            <label for="🔎" class="emoji">🔎</label><input class="searchBox" type="text" id="nameSearch" class="searchBox" placeholder="What are you looking for?">
+        
+        </center>  
+      <div class="bodyBox">
+        <div id="categoryCheckboxes">
+            <p>Search By Category</p>
+            <label for="clothing">
+                <input type="checkbox" id="clothing" name="Clothing"> Clothing
+            </label>
+            <label for="disabilities">
+                <input type="checkbox" id="disabilities" name="Disabilities"> Disabilities
+            </label>
+            <label for="education">
+                <input type="checkbox" id="education" name="education"> Education
+            </label>
+            <label for="elderly">
+                <input type="checkbox" id="elderly" name="Elderly"> Elderly
+            </label>
+            <label for="financialAssistance">
+                <input type="checkbox" id="financialAssistance" name="Financial Assistance"> Financial Assistance
+            </label>
+            <label for="food">
+                <input type="checkbox" id="food" name="Food"> Food
+            </label>
+            <label for="furniture">
+                <input type="checkbox" id="furniture" name="Furniture"> Furniture
+            </label>            
+            <label for="housingShelter">
+                <input type="checkbox" id="housingShelter" name="Housing/Shelter"> Housing/Shelter
+            </label>
 
-            </table>
+            <label for="healthServices">
+                <input type="checkbox" id="healthServices" name="Health Services"> Health Services
+            </label>
+            <label for="legalServices">
+                <input type="checkbox" id="legalServices" name="Legal Services"> Legal Services
+            </label>
+            <label for="mentalHealthServices">
+                <input type="checkbox" id="mentalHealthServices" name="Mental Health Services"> Mental Health Services
+            </label>
+            <label for="parenting">
+                <input type="checkbox" id="parenting" name="Parenting"> Parenting
+            </label>
+            <label for="substanceAbuse">
+                <input type="checkbox" id="substanceAbuse" name="Substance Abuse"> Substance Abuse
+            </label>
+            <label for="transportation">
+                <input type="checkbox" id="transportation" name="Transportation"> Transportation
+            </label>
+            <label for="veterans">
+                <input type="checkbox" id="veterans" name="Veterans"> Veterans
+            </label>
+            <label for="youth">
+                <input type="checkbox" id="youth" name="Youth"> Youth
+            </label>
+            
+            
+        </div>
+
+        
+        <table id="searchTable" class="table">
+            <tr>
+                <th>Resource</th>
+                <th>Categories</th>
+                <th>Address</th>
+                <th>County</th>
+                <th>Website</th>
+                <th>Phone Number</th>
+                <th>Description</th>
+            </tr>
+        
+
+        </table>
         
     </div>
 

@@ -79,7 +79,8 @@ function initAutocomplete() {
       {
         types: ['address'],
         componentRestrictions: {'country' : ['US']},
-        fields: ['address_component']
+        fields: ['address_component'],
+        
       });
   autocomplete.addListener('place_changed', onPlaceChanged);
 }
