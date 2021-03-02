@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 let config = {
     user: 'earagon',
     password: 'Pass123!',
-    server: 'AAD-CON-VIR',
-    database: 'Community Resources Database'
+    server: 'ARAGON\\SQLEXPRESS',
+    database: 'Community Resources'
 };
 
 //magic that connects to the sql database or something idk
@@ -80,7 +80,7 @@ app.post('/', function(req,res){
     runSqlQuery('SELECT resourceAddress FROM CommunityResource;')
     .then(dbReturn => {
 
-        if(dbReturn.recordset.som((addressObj) => {
+        if(dbReturn.recordset.some((addressObj) => {
             return addressObj.resourceAddress === req.body.resourceAddress;
         })) {
             res.status(418).send('Address is already used');

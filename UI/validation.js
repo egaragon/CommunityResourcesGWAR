@@ -12,7 +12,7 @@ form1.addEventListener('submit', e => {
 
   let dataToSubmit = {};
   let checkedBoxes = [];
-  console.log(placeSelected);
+  
 
   if(!placeSelected){
     alert('Please Select an Autocomplete Option');
@@ -25,7 +25,7 @@ form1.addEventListener('submit', e => {
     //if the value of the input is 'on' assume it's a checkbox and add to array
     if (value === 'on') {
       checkedBoxes.push(key);
-      console.log(key);
+      
     }
     else {
       dataToSubmit[key] = value;
@@ -55,7 +55,7 @@ form1.addEventListener('submit', e => {
     })
     .then(res => res.json())
     .then(dataToSubmit => {
-      console.log('Success:', dataToSubmit);
+      console.log('Success');
       form1.reset();
       
     })
@@ -89,16 +89,9 @@ function initAutocomplete() {
 function onPlaceChanged() { 
   let place = autocomplete.getPlace();
   county = place.address_components.find(element => element?.long_name?.includes('County'));
-  console.log(county);
   county = county?.long_name;
   
   placeSelected = true;
-    
-  console.log('PLACE:', place);
-
-  if(place.address_component) {
-    console.log(place);
-  }
   
 } 
 
