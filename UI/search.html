@@ -29,8 +29,7 @@
     table {
         flex-grow: 5;
         grid-column: 2fr;
-        min-height: 100%;
-        overflow: auto;
+        max-height: 100%;
     }
 
     tr:nth-child(even) {
@@ -62,8 +61,8 @@
         flex-direction: row;  
         flex: 5;   
         align-items: stretch; 
-        margin: 3rem;   
-        max-height: 100%;  
+        margin: 3rem;  
+        overflow: auto;   
     }
   
     .searchBox {
