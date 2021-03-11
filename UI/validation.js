@@ -2,6 +2,12 @@
 const form1 = document.getElementById('form1');
 
 let county;
+let noAddressBox = document.getElementById('noAddressBox');
+
+noAddressBox.addEventListener('change', e => {
+  console.log('no address box = ', noAddressBox.checked);
+})
+
 
 //listen for form submit event
 form1.addEventListener('submit', e => {
@@ -13,8 +19,9 @@ form1.addEventListener('submit', e => {
   let dataToSubmit = {};
   let checkedBoxes = [];
   
-
-  if(!placeSelected){
+  
+  
+  if(!placeSelected && !noAddressBox.checked){
     alert('Please Select an Autocomplete Option');
     return;
   }
@@ -35,10 +42,10 @@ form1.addEventListener('submit', e => {
   //add checked boxes to submission object
   dataToSubmit.resourceCategory = checkedBoxes;
   dataToSubmit.county = county;
-  
+
   //submit or here we just log
   console.log(dataToSubmit);
-  if(placeSelected) {
+  if(placeSelected || noAddressBox) {
     fetch('http://localhost:5000', {
       method: 'POST',
       headers: {
@@ -94,4 +101,5 @@ function onPlaceChanged() {
   placeSelected = true;
   
 } 
+
 

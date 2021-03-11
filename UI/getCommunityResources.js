@@ -57,7 +57,7 @@ function createRow(resource) {
 }
 
 const nameSearch = document.getElementById('nameSearch'); 
-const checkboxes = document.querySelectorAll('input[type="checkbox"]'); 
+const checkboxes = document.querySelectorAll('#categoryCheckboxes'); 
 let categoryToSearchFor = []; //empty array to put checkbox values in
 let searchString = ''; //initialize the variable that holds the string in the searchbox
 
@@ -66,7 +66,9 @@ checkboxes.forEach(checkbox => {
     checkbox.addEventListener('change', e => {
         
         if(e.target.checked) {
-            categoryToSearchFor.push(e.target.id); //push checkbox checked values into array
+            categoryToSearchFor.push(e.target.id.toLowerCase()); //push checkbox checked values into array
+            console.log('category to search for:', categoryToSearchFor);
+            console.log('target id:', e.target.id);
         }
         else {
             let index = categoryToSearchFor.indexOf(e.target.id);
@@ -80,7 +82,7 @@ checkboxes.forEach(checkbox => {
 function applyFilter(searchString, searchCategories) {
     const records = Array.from(document.getElementsByClassName('record'));
     
-    console.log(records);
+    //console.log(records);
 
     let thingstoUnhide = searchObject.filter(element => {
         let matchesCategory = searchCategories.every(category => {
@@ -107,7 +109,7 @@ function applyFilter(searchString, searchCategories) {
 
     thingsToHide.forEach(thingToHide =>{
         document.getElementById('row' + thingToHide.id).setAttribute('class', 'hidden');
-        console.log(`Thing to Hide: ${thingsToHide}`);
+        //console.log(`Thing to Hide: ${thingsToHide}`);
     })
 
 }

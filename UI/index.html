@@ -25,6 +25,17 @@
     grid-template-rows: 5rem 1fr;
   }
 
+  #information {
+    width: 100%;
+    max-width: 30rem;
+    height: 10rem;
+    resize: none;
+  }
+
+  #unitNumber {
+    max-width: 10rem;
+  }
+
   .checkboxes > fieldset > label {
     font-weight: 200;
     font-size: .8rem;
@@ -33,6 +44,10 @@
   .textboxes {
     grid-row: 1 / span 1;
     grid-column: 1;
+  }
+
+  .noAddressBox {
+    font-weight: normal;
   }
 
   .categories {
@@ -81,6 +96,14 @@
           <input type ="text" id="resourceAddress" name = "resourceAddress" >
         </label>
         <label>
+          Apt/Ste/Un#
+          <input type="text" id="unitNumber" name="unitNumber">
+        </label>
+        <label class="noAddressBox">
+          No Address Listed 
+          <input type="checkbox" id="noAddressBox">
+        </label>
+        <label>
           Website
           <input type ="text" id= "website" required="required" name = "website" >
         </label>
@@ -91,7 +114,7 @@
         </label>
          <label>
            Description
-          <input type ="text" id= "information" required="required" name = "information">
+          <textarea type ="text" id= "information" required="required" maxlength="255" name = "information"></textarea>
          </label>
         </div>
         <h3 class='categories'>Relevant Categories</h3>
@@ -108,8 +131,8 @@
           <label for="elderly">
           <input type="checkbox" id="elderly" name="Elderly"> Elderly
           </label>
-          <label for="financialAssistance">
-          <input type="checkbox" id="financialAssistance" name="Financial Assistance"> Financial Assistance
+          <label for="financial Assistance">
+          <input type="checkbox" id="Financial Assistance" name="Financial Assistance"> Financial Assistance
           </label>
           <label for="food">
           <input type="checkbox" id="food" name="Food"> Food

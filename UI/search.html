@@ -15,21 +15,19 @@
         border: 1px solid black;
     }
     th {
-        text-align: center;
-        
+        text-align: center;   
     }
 
     td {
         padding: 1rem;
         text-align: center;
         margin: 1rem;
-
     }
 
-    table {
-        flex-grow: 5;
-        grid-column: 2fr;
-        max-height: 100%;
+    .tableBox {
+        flex-grow: 2;
+        overflow: auto; 
+        
     }
 
     tr:nth-child(even) {
@@ -53,16 +51,18 @@
         border: 1px solid black;
         border-right: none;
         flex-shrink: 1;
-        max-height: 100%;
+        height: fit-content;
+        
     }
 
     .bodyBox {
         display: flex;
         flex-direction: row;  
         flex: 5;   
-        align-items: stretch; 
+        align-items: stretch;
         margin: 3rem;  
-        overflow: auto;   
+        max-height: 80vh; 
+        overflow: auto;
     }
   
     .searchBox {
@@ -91,7 +91,10 @@
             
             <label for="🔎" class="emoji">🔎</label><input class="searchBox" type="text" id="nameSearch" class="searchBox" placeholder="What are you looking for?">
         
-        </center>  
+        </center> 
+        
+       
+
       <div class="bodyBox">
         <div id="categoryCheckboxes">
             <p>Search By Category</p>
@@ -107,8 +110,8 @@
             <label for="elderly">
                 <input type="checkbox" id="elderly" name="Elderly"> Elderly
             </label>
-            <label for="financialAssistance">
-                <input type="checkbox" id="financialAssistance" name="Financial Assistance"> Financial Assistance
+            <label for="financial Assistance">
+                <input type="checkbox" id="financial Assistance" name="Financial Assistance"> Financial Assistance
             </label>
             <label for="food">
                 <input type="checkbox" id="food" name="Food"> Food
@@ -117,23 +120,23 @@
                 <input type="checkbox" id="furniture" name="Furniture"> Furniture
             </label>            
             <label for="housingShelter">
-                <input type="checkbox" id="housingShelter" name="Housing/Shelter"> Housing/Shelter
+                <input type="checkbox" id="housing/Shelter" name="Housing/Shelter"> Housing/Shelter
             </label>
 
             <label for="healthServices">
-                <input type="checkbox" id="healthServices" name="Health Services"> Health Services
+                <input type="checkbox" id="health Services" name="Health Services"> Health Services
             </label>
             <label for="legalServices">
-                <input type="checkbox" id="legalServices" name="Legal Services"> Legal Services
+                <input type="checkbox" id="legal Services" name="Legal Services"> Legal Services
             </label>
             <label for="mentalHealthServices">
-                <input type="checkbox" id="mentalHealthServices" name="Mental Health Services"> Mental Health Services
+                <input type="checkbox" id="mental Health Services" name="Mental Health Services"> Mental Health Services
             </label>
             <label for="parenting">
                 <input type="checkbox" id="parenting" name="Parenting"> Parenting
             </label>
             <label for="substanceAbuse">
-                <input type="checkbox" id="substanceAbuse" name="Substance Abuse"> Substance Abuse
+                <input type="checkbox" id="substance Abuse" name="Substance Abuse"> Substance Abuse
             </label>
             <label for="transportation">
                 <input type="checkbox" id="transportation" name="Transportation"> Transportation
@@ -149,7 +152,7 @@
         </div>
 
         
-        <table id="searchTable" class="table">
+        <table id="searchTable" class="tableBox">
             <tr>
                 <th>Resource</th>
                 <th>Categories</th>

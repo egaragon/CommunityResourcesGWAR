@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 let config = {
     user: 'earagon',
     password: 'Pass123!',
-    server: 'ARAGON\\SQLEXPRESS',
-    database: 'Community Resources'
+    server: 'AAD-CON-VIR',
+    database: 'Community Resources Database'
 };
 
 //magic that connects to the sql database or something idk
@@ -76,11 +76,15 @@ app.post('/', function(req,res){
     const sqlInput = req.body;
     
     sqlInput.resourceCategory = JSON.stringify(req.body.resourceCategory);
-    
+    sqlInput.resourceAddress = req.body.resourceAddress ? JSON.stringify(req.body.resourceAddress + ' ' + req.body.unitNumber) : '';
+    sqlInput.county = req.body.county || '';
+
     runSqlQuery('SELECT resourceAddress FROM CommunityResource;')
     .then(dbReturn => {
 
-        if(dbReturn.recordset.some((addressObj) => {
+        console.log(req.body.resourceAddress);
+
+        if(req.body.resourceAddress !== '' && dbReturn.recordset.some((addressObj) => {
             return addressObj.resourceAddress === req.body.resourceAddress;
         })) {
             res.status(418).send('Address is already used');
