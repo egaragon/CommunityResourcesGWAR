@@ -82,8 +82,6 @@ app.post('/', function(req,res){
     runSqlQuery('SELECT resourceAddress FROM CommunityResource;')
     .then(dbReturn => {
 
-        console.log(req.body.resourceAddress);
-
         if(req.body.resourceAddress !== '' && dbReturn.recordset.some((addressObj) => {
             return addressObj.resourceAddress === req.body.resourceAddress;
         })) {
