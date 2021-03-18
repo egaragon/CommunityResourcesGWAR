@@ -83,7 +83,7 @@ app.post('/', function(req,res){
     .then(dbReturn => {
 
         if(req.body.resourceAddress !== '' && dbReturn.recordset.some((addressObj) => {
-            return addressObj.resourceAddress === req.body.resourceAddress;
+            return JSON.stringify(addressObj.resourceAddress).toLowerCase() === JSON.stringify(req.body.resourceAddress).toLowerCase();
         })) {
             res.status(418).send('Address is already used');
         }

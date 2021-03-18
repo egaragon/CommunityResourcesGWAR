@@ -11,31 +11,64 @@
 <!-- You should properly set the path from the main file. -->
 </meta>
 <style>
+    
+    body {
+        background-color: whitesmoke;
+    }
+    
     table, th, td {
         border: 1px solid black;
     }
     th {
-        text-align: center;   
+        text-align: center;
+        border-color: lightgray;   
     }
 
     td {
         padding: 1rem;
         text-align: center;
         margin: 1rem;
+        border-top: none;
+        border-bottom: none;
+        border-color: lightgray;
     }
 
     .tableBox {
         flex-grow: 2;
         overflow: auto; 
         margin-left: 25rem;
+        border: none;
     }
 
-    tr:nth-child(even) {
-        background-color: lightskyblue;
+    tr:nth-child(odd) {
+        background-color: rgb(235, 235, 235);
         color: black;
     }
 
-        
+    tr:nth-child(even) {
+        background-color: white;
+        color: black;
+    }
+
+    tr:nth-child(1) {
+        background-color: 001489;
+        color: white;
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .header {
+        font-weight: bold;
+    }
+
+     .omniSearch {
+         border-color: black;
+     }
+
     .hidden {
         display: none;
     }
@@ -45,16 +78,19 @@
         display: block;
     }
 
+    .categoryHeader {
+        font-weight: bold;
+    }
 
     #categoryCheckboxes {
         padding: 1rem;
-        border: 1px solid black;
-        border-right: none;
+        border: none;
         flex-shrink: 1;
         height: fit-content;
         position: fixed;
         width: 25rem;
-        
+        background-color: whitesmoke;
+        font-weight: normal !important;
     }
 
     .bodyBox {
@@ -70,6 +106,7 @@
   
     .searchBox {
         display: inline;
+        
     }
 
     .emoji {
@@ -89,18 +126,26 @@
     </head>
 
     <body>
-        <center>
-            <h1>Community Resources</h1>
-            
-            <label for="🔎" class="emoji">🔎</label><input class="searchBox" type="text" id="nameSearch" class="searchBox" placeholder="What are you looking for?">
         
-        </center> 
+            <img class="logo"
+                src="../images/GoodwillLogo.svg"
+                alt="Goodwill Logo"
+                height="100" 
+                width="300" 
+                />
+        <center>
+            <h1 class="header">Community Resources</h1>
+            
+            <label for="🔎" class="emoji">🔎</label>
+            <input class="searchBox" type="text" id="nameSearch" class="searchBox" placeholder="What are you looking for?">
+        </center>
+         
         
        
 
       <div class="bodyBox">
-        <div id="categoryCheckboxes">
-            <p>Search By Category</p>
+        <div id="categoryCheckboxes" class="categoryCheckboxes">
+            <p class="categoryHeader">Search By Category</p>
             <label for="clothing">
                 <input type="checkbox" id="clothing" name="Clothing"> Clothing
             </label>
@@ -122,12 +167,12 @@
             <label for="furniture">
                 <input type="checkbox" id="furniture" name="Furniture"> Furniture
             </label>            
-            <label for="housingShelter">
-                <input type="checkbox" id="housing/Shelter" name="Housing/Shelter"> Housing/Shelter
-            </label>
-
+            
             <label for="healthServices">
                 <input type="checkbox" id="health Services" name="Health Services"> Health Services
+            </label>
+            <label for="housingAssistance">
+                <input type="checkbox" id="housing Assistance" name="Housing Assistance"> Housing Assistance
             </label>
             <label for="legalServices">
                 <input type="checkbox" id="legal Services" name="Legal Services"> Legal Services
@@ -137,6 +182,12 @@
             </label>
             <label for="parenting">
                 <input type="checkbox" id="parenting" name="Parenting"> Parenting
+            </label>
+            <label for="shelter">
+                <input type="checkbox" id="shelter" name="Shelter"> Shelter
+            </label>
+            <label for="statewide">
+                <input type="checkbox" id="statewide" name="Statewide"> Statewide
             </label>
             <label for="substanceAbuse">
                 <input type="checkbox" id="substance Abuse" name="Substance Abuse"> Substance Abuse

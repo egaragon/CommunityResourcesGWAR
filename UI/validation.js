@@ -64,6 +64,7 @@ form1.addEventListener('submit', e => {
     .then(dataToSubmit => {
       console.log('Success');
       form1.reset();
+      alert('Success!');
       
     })
     .catch((error) => {
