@@ -63,10 +63,14 @@
 
     .header {
         font-weight: bold;
+        text-align: center;
+        
     }
 
-     .omniSearch {
-         border-color: black;
+     .help {
+        position: absolute;
+        top: 0;
+        right: 0;
      }
 
     .hidden {
@@ -75,7 +79,8 @@
 
     input {
         max-width: 30rem;
-        display: block;
+        
+        
     }
 
     .categoryHeader {
@@ -90,7 +95,10 @@
         position: fixed;
         width: 25rem;
         background-color: whitesmoke;
-        font-weight: normal !important;
+    }
+
+    #categoryCheckboxes > label {
+        font-weight: normal;
     }
 
     .bodyBox {
@@ -105,7 +113,6 @@
     }
   
     .searchBox {
-        display: inline;
         
     }
 
@@ -127,17 +134,18 @@
 
     <body>
         
-            <img class="logo"
-                src="../images/GoodwillLogo.svg"
-                alt="Goodwill Logo"
-                height="100" 
-                width="300" 
-                />
+        <img class="logo"
+            src="../images/GoodwillLogo.svg"
+            alt="Goodwill Logo"
+            height="100" 
+            width="300" 
+            />
+    
+        <h1 class="header">Community Resources</h1>
+        <p class="help">Have questions? Call Mission Services at <a href="tel:501-372-5100">501-372-5100</a> ext. 1207 or 1217</p>
         <center>
-            <h1 class="header">Community Resources</h1>
-            
             <label for="🔎" class="emoji">🔎</label>
-            <input class="searchBox" type="text" id="nameSearch" class="searchBox" placeholder="What are you looking for?">
+            <input class="searchBox" type="text" id="nameSearch" class="searchBox" placeholder="Search by Resource, Address, etc.">
         </center>
          
         
