@@ -56,21 +56,31 @@
     }
 
     .logo {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
+        float: left;
+        margin-top: 1rem;
+    
+    } 
     .header {
         font-weight: bold;
         text-align: center;
-        
+        margin-top: 2rem;
     }
 
      .help {
-        position: absolute;
-        top: 0;
-        right: 0;
+        float: right;
+        margin-top: 3rem;
+     }
+
+     .topOfPage {
+         display: grid;
+         grid-template-columns: 1fr 2fr 1fr;
+         grid-template-rows: auto auto;
+     }
+
+     .searchBox {
+         margin: auto;
+         grid-column: 2;
+         grid-row: 2;
      }
 
     .hidden {
@@ -95,10 +105,12 @@
         position: fixed;
         width: 25rem;
         background-color: whitesmoke;
+        flex-shrink: auto;
     }
 
     #categoryCheckboxes > label {
         font-weight: normal;
+
     }
 
     .bodyBox {
@@ -111,11 +123,7 @@
         overflow: auto;
         
     }
-    .emoji {
-        margin-right: 1rem;
-        display: inline;
-    }
-  
+    
 </style>
 
 <!doctype html>
@@ -128,21 +136,21 @@
     </head>
 
     <body>
+        <div class="topOfPage">
+            <img class="logo"
+                src="../images/GoodwillLogo.svg"
+                alt="Goodwill Logo"
+                height="100" 
+                width="300" 
+                />
         
-        <img class="logo"
-            src="../images/GoodwillLogo.svg"
-            alt="Goodwill Logo"
-            height="100" 
-            width="300" 
-            />
-    
-        <h1 class="header">Community Resources</h1>
-        <p class="help">Have questions? Call Mission Services at <a href="tel:501-372-5100">501-372-5100</a> ext. 1207 or 1217</p>
-        <center>
-            <label for="🔎" class="emoji">🔎</label>
-            <input class="searchBox" type="text" id="nameSearch" class="searchBox" placeholder="Search by Resource, Address, etc.">
-        </center>
-         
+            <h1 class="header">Community Resources</h1>
+            <p class="help">Have questions? Call Mission Services at <a href="tel:501-372-5100">501-372-5100</a> ext. 1207 or 1217</p>
+            
+                
+                <input class="searchBox" type="text" id="nameSearch" class="searchBox" placeholder="🔎 Search by Resource, Address, etc.">
+            
+        </div> 
         
        
 
