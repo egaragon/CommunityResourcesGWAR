@@ -81,7 +81,7 @@ let placeSelected = false;//check if an autocomplete selection was made
 
 function initAutocomplete() {
   
-  console.log('initAutocomplete Called')
+  
   autocomplete = new google.maps.places.Autocomplete(
     document.getElementById('resourceAddress'),
       {
@@ -103,4 +103,5 @@ function onPlaceChanged() {
   
 } 
 
-
+console.log('This site was created by Erick Aragon for Goodwill Industries of Arkansas!');
+console.log('You can find me at https://www.linkedin.com/in/erickaragon/');

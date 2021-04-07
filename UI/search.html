@@ -34,10 +34,8 @@
     }
 
     .tableBox {
-        flex-grow: 2;
-        overflow: auto; 
-        margin-left: 25rem;
         border: none;
+        max-width: fit-content;
     }
 
     tr:nth-child(odd) {
@@ -100,27 +98,28 @@
     #categoryCheckboxes {
         padding: 1rem;
         border: none;
-        flex-shrink: 1;
-        height: fit-content;
-        position: fixed;
-        width: 25rem;
+        width: 30rem;
         background-color: whitesmoke;
-        flex-shrink: auto;
+        object-fit:scale-down;
+        max-height: 80vh;
+        
+        align-content: top;
+        margin-top: 1rem;
     }
 
     #categoryCheckboxes > label {
         font-weight: normal;
-
+        max-height: 100%;
     }
 
     .bodyBox {
         display: flex;
         flex-direction: row;  
-        flex: 5;   
+        flex-wrap: nowrap;   
         align-items: stretch;
         margin: 3rem;  
         max-height: 80vh; 
-        overflow: auto;
+        overflow: scroll;
         
     }
     
@@ -137,25 +136,23 @@
 
     <body>
         <div class="topOfPage">
-            <img class="logo"
+            <a href="https://goodwillar.org"><img class="logo"
                 src="../images/GoodwillLogo.svg"
                 alt="Goodwill Logo"
                 height="100" 
                 width="300" 
                 />
-        
+            </a>
             <h1 class="header">Community Resources</h1>
             <p class="help">Have questions? Call Mission Services at <a href="tel:501-372-5100">501-372-5100</a> ext. 1207 or 1217</p>
-            
-                
-                <input class="searchBox" type="text" id="nameSearch" class="searchBox" placeholder="🔎 Search by Resource, Address, etc.">
+            <input class="searchBox" type="text" id="nameSearch" class="searchBox" placeholder="🔎 Search by Resource, Address, etc.">
             
         </div> 
         
        
 
-      <div class="bodyBox">
-        <div id="categoryCheckboxes" class="categoryCheckboxes">
+        <div class="bodyBox">
+            <div id="categoryCheckboxes" class="categoryCheckboxes">
             <p class="categoryHeader">Search By Category</p>
             <label for="clothing">
                 <input type="checkbox" id="clothing" name="Clothing"> Clothing
@@ -164,7 +161,7 @@
                 <input type="checkbox" id="disabilities" name="Disabilities"> Disabilities
             </label>
             <label for="education">
-                <input type="checkbox" id="education" name="education"> Education
+                <input type="checkbox" id="education" name="Education"> Education
             </label>
             <label for="elderly">
                 <input type="checkbox" id="elderly" name="Elderly"> Elderly
@@ -214,24 +211,25 @@
             </label>
             
             
+            </div>
+        
+        
+
+            <table id="searchTable" class="tableBox">
+                <tr>
+                    <th>Resource</th>
+                    <th>Categories</th>
+                    <th>Address</th>
+                    <th>County</th>
+                    <th>Website</th>
+                    <th>Phone Number</th>
+                    <th>Description</th>
+                </tr>
+            
+
+            </table>
         </div>
-
-        
-        <table id="searchTable" class="tableBox">
-            <tr>
-                <th>Resource</th>
-                <th>Categories</th>
-                <th>Address</th>
-                <th>County</th>
-                <th>Website</th>
-                <th>Phone Number</th>
-                <th>Description</th>
-            </tr>
-        
-
-        </table>
-        
-    </div>
+    
 
 
     </body>

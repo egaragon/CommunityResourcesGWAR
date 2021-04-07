@@ -120,3 +120,6 @@ nameSearch.addEventListener('input', e => {
     applyFilter(searchString, categoryToSearchFor);
    
 });
+
+console.log('This site was created by Erick Aragon for Goodwill Industries of Arkansas!'); 
+console.log('You can find me at https://www.linkedin.com/in/erickaragon/');
