@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 //database config
 let config = {
     user: 'earagon',
-    password: 'Pass123!',
+    password: 'Pass!123',
     server: 'AAD-CON-VIR',
     database: 'Community Resources Database'
 };
