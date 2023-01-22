@@ -20,7 +20,7 @@ let config = {
     database: 'Community Resources Database'
 };
 
-//magic that connects to the sql database or something idk
+//connection to sql database
 const runSqlQuery = (sqlString) => {
     return new Promise((resolve, reject) => {
         mssql.connect(config)
@@ -53,14 +53,14 @@ const runInsertQuery = (sqlString, input) => {
     })
 }
 
-//getting data from sql database using magic from before
+//getting data from sql database using previous connection
 app.get('/', function (req, res) {
 
     runSqlQuery('SELECT * FROM CommunityResource;') //injecting sql to run queries
     .then((results) => {
         res.send(JSON.stringify(results)); //returns results of query as a string
     })
-    .catch((err) =>{ //in case shit's fucked up
+    .catch((err) =>{ //in case of error
         console.error(err);
         res.status(500).send();
     })
