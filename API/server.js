@@ -4,21 +4,20 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mssql = require('mssql');
 const { type } = require('os');
+const dotenv = require('dotenv').config();
 
 const app = express();
 app.use(cors());
 //app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-
-
 //database config
-let config = {
+const config = {
     user: 'earagon',
-    password: 'Pass!123',
-    server: 'AAD-CON-VIR',
-    database: 'Community Resources Database'
-};
+    password: 'Pass123!',
+    server: 'localhost',
+    database: 'Community Resources',
+}; //temporarily keeping config as is - would move to aws for live deploy
 
 //connection to sql database
 const runSqlQuery = (sqlString) => {
